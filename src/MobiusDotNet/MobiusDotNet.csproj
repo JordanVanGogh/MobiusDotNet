@@ -5,8 +5,14 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Jordan van Gogh</Authors>
     <Company>Agile Bits</Company>
-    <Description>Unofficial, community supported, stongly typed Mobius client for .NET Framework, .NET Core, Mono and Xamarin.</Description>
+    <Description>Unofficial community backed Mobius API client. Stongly typed and async, provides ease of access to the Mobius API for .NET developers.</Description>
     <Copyright />
+    <PackageLicenseUrl>https://raw.githubusercontent.com/AgileBits-Jordan/MobiusDotNet/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>Mobius Payments Financial</PackageTags>
+    <RepositoryUrl>https://github.com/AgileBits-Jordan/MobiusDotNet</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/AgileBits-Jordan/MobiusDotNet</PackageProjectUrl>
+    <PackageIconUrl></PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
