@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace MobiusDotNet.Resources.Tokens.Reponses
+namespace MobiusDotNet.Resources.Tokens.Responses
 {
     /// <summary>
     ///     The response of an address balance request.

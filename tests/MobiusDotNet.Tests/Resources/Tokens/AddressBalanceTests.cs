@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using MobiusDotNet.Resources;
 using MobiusDotNet.Resources.Tokens;
 using MobiusDotNet.Resources.Tokens.Parameters;
-using MobiusDotNet.Resources.Tokens.Reponses;
+using MobiusDotNet.Resources.Tokens.Responses;
 using Xunit;
 
 namespace MobiusDotNet.Tests.Resources.Tokens

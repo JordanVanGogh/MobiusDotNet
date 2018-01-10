@@ -1,7 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 using MobiusDotNet.Resources.Tokens.Parameters;
-using MobiusDotNet.Resources.Tokens.Reponses;
+using MobiusDotNet.Resources.Tokens.Responses;
 
 namespace MobiusDotNet.Resources.Tokens
 {
