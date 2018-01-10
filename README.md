@@ -1,10 +1,13 @@
-# Unofficial Mobius .NET (C# / Visual Basic) API Client
+# Unofficial Mobius .NET Core (C#) API Client
 
-Unofficial community backed Mobius API client for .NET Framework, .NET Core, Mono and Xamarin. Strongly typed and async & awaitable. Provides ease of access to the Mobius API for web, mobile and desktop applications written in C#, Visual Basic, F#, Powershell or any other CLR language.
+Unofficial community backed Mobius API client for .NET Core 2.0. Strongly typed and async & awaitable. Provides ease of access to the Mobius API for applications written in C#/.NET Core. 
+
+**Important:**
+The .NET Framework, Mono and Xamarin runtimes are currently not supported as of yet. This is because their HttpClient class implementation doesn't support GET requests with a body, which is a requirement when using the Mobius API. I'm working on creating a separate version of MobiusDotNet for those with an alternate http client package.
 
 ## Installation
 
-There is a NuGet package available that you can install directly from within Visual Studio, JetBrains Rider or LinqPad. Optionally you could also use command line tools:
+There is a NuGet package available that you can install directly from within Visual Studio or JetBrains Rider. Optionally you could also use command line tools:
 
 Install the package with `Package Manager`:
 ```
