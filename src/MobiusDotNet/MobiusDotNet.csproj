@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Jordan van Gogh</Authors>
+    <Company>Agile Bits</Company>
+    <Description>Unofficial, community supported, stongly typed Mobius client for .NET Framework, .NET Core, Mono and Xamarin.</Description>
+    <Copyright />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+</Project>
