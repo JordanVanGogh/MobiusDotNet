@@ -1,14 +1,23 @@
 # Unofficial Mobius .NET (C# / Visual Basic) API Client
 
-Unofficial community backed Mobius API client for modern .NET Framework, .NET Core, Mono and Xamarin. Strongly typed and async & awaitable. Provides ease of access to the Mobius API for web, mobile and desktop applications written in C#, Visual Basic, F#, Powershell or any other CLR language.
+Unofficial community backed Mobius API client for .NET Framework, .NET Core, Mono and Xamarin. Strongly typed and async & awaitable. Provides ease of access to the Mobius API for web, mobile and desktop applications written in C#, Visual Basic, F#, Powershell or any other CLR language.
 
 ## Installation
 
-There is a NuGet package available that you can install from Visual Studio, VSCode, JetBrains Rider or LinqPad. Optionally you could also use the NuGet command line tools to install it.
+There is a NuGet package available that you can install directly from within Visual Studio, JetBrains Rider or LinqPad. Optionally you could also use command line tools:
+
+Install the package with `Package Manager`:
+```
+PM> Install-Package MobiusDotNet
+```
+or with `.NET CLI`
+```
+> dotnet add package MobiusDotNet
+```
 
 ## Usage
 
-You can start by importing the namespace on top of your code file:
+You can start by importing the namespace on top of your C# code file(s):
 ```csharp
 using MobiusDotNet;
 ```
@@ -86,7 +95,7 @@ catch (MobiusException e)
 
 ## Methods
 
-Get the balance of credits for specified app & email:
+**App Store > Balance:** Get the balance of credits for specified app & email:
 ```csharp
 var appUID = Guid.Parse("7949c369-6db7-4313-bef8-08e94d166de5");
 var email = "mail@example.com";
@@ -99,7 +108,7 @@ var balance = await mobius.AppStore
   });
 ```
 
-Use credits on specified app using user's email address:
+**App Store > Use:** use credits on specified app using user's email address:
 ```csharp
 var result = await mobius.AppStore
   .UseAsync(new UseParameters
