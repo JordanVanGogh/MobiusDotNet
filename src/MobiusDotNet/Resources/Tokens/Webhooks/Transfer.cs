@@ -6,7 +6,7 @@ namespace MobiusDotNet.Resources.Tokens.Webhooks
     /// <summary>
     ///     Token transfer is called when tokens are transferred 
     ///     into a Mobius created or registered address for a 
-    /// registered token.
+    ///     registered token.
     /// </summary>
     public class Transfer : Webhook
     {
