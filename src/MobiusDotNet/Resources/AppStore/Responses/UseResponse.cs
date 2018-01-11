@@ -17,6 +17,6 @@ namespace MobiusDotNet.Resources.AppStore.Responses
         ///     Gets or sets the number of credits on the balance after the use.
         /// </summary>
         [JsonProperty("num_credits")]
-        public int NumberOfCredits { get; set; }
+        public decimal NumberOfCredits { get; set; }
     }
 }

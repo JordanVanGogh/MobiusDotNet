@@ -1,10 +1,10 @@
 ﻿
-namespace MobiusDotNet.Resources.Tokens.Parameters
+namespace MobiusDotNet.Resources.Tokens.Requests
 {
     /// <summary>
-    ///     The parameters that must be provided for a register token request.  
+    ///     Tokens register token request.  
     /// </summary>
-    public class RegisterTokenParameters : ParametersBase
+    public class RegisterTokenRequest : RequestBase
     {
         /// <summary>
         ///     Gets or sets the token type.

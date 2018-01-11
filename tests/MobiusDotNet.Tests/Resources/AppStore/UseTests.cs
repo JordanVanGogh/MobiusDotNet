@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MobiusDotNet.Resources;
-using MobiusDotNet.Resources.AppStore.Parameters;
+using MobiusDotNet.Resources.AppStore.Requests;
 using MobiusDotNet.Resources.AppStore.Responses;
 using Xunit;
 
@@ -15,14 +15,14 @@ namespace MobiusDotNet.Tests.Resources.AppStore
             bool isSuccess = true;
             int numberOfCredits = 200;
 
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("app_store", "use"), 200, new UseResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("app_store", "use"), 200, new UseResponse
             {
                 IsSuccess = isSuccess,
                 NumberOfCredits = numberOfCredits
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            var response = mobius.AppStore.Use(new UseParameters
+            var response = mobius.AppStore.Use(new UseRequest
             {
                 AppUID = Guid.NewGuid(),
                 Email = "test@test.local",
@@ -40,14 +40,14 @@ namespace MobiusDotNet.Tests.Resources.AppStore
             bool isSuccess = true;
             int numberOfCredits = 200;
 
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("app_store", "use"), 200, new UseResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("app_store", "use"), 200, new UseResponse
             {
                 IsSuccess = isSuccess,
                 NumberOfCredits = numberOfCredits
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            var response = await mobius.AppStore.UseAsync(new UseParameters
+            var response = await mobius.AppStore.UseAsync(new UseRequest
             {
                 AppUID = Guid.NewGuid(),
                 Email = "test@test.local",
@@ -62,7 +62,7 @@ namespace MobiusDotNet.Tests.Resources.AppStore
         [Fact]
         public void ThrowsExceptionOnErrorResponse()
         {
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("app_store", "use"), 400, new ErrorResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("app_store", "use"), 400, new ErrorResponse
             {
                 Error = new ErrorResponse.ErrorContainer
                 {
@@ -71,7 +71,7 @@ namespace MobiusDotNet.Tests.Resources.AppStore
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            Action act = () => mobius.AppStore.Use(new UseParameters
+            Action act = () => mobius.AppStore.Use(new UseRequest
             {
                 AppUID = Guid.NewGuid(),
                 Email = "test@test.local",
@@ -83,7 +83,7 @@ namespace MobiusDotNet.Tests.Resources.AppStore
         [Fact]
         public async void ThrowsExceptionOnErrorResponseAsync()
         {
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("app_store", "use"), 400, new ErrorResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("app_store", "use"), 400, new ErrorResponse
             {
                 Error = new ErrorResponse.ErrorContainer
                 {
@@ -92,7 +92,7 @@ namespace MobiusDotNet.Tests.Resources.AppStore
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            Func<Task> func = () => mobius.AppStore.UseAsync(new UseParameters
+            Func<Task> func = () => mobius.AppStore.UseAsync(new UseRequest
             {
                 AppUID = Guid.NewGuid(),
                 Email = "test@test.local",

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MobiusDotNet.Resources;
-using MobiusDotNet.Resources.AppStore.Parameters;
+using MobiusDotNet.Resources.AppStore.Requests;
 using MobiusDotNet.Resources.AppStore.Responses;
 using Xunit;
 
@@ -12,15 +12,15 @@ namespace MobiusDotNet.Tests.Resources.AppStore
         [Fact]
         public void GetsBalance()
         {
-            int numberOfCredits = 500;
+            decimal numberOfCredits = 500;
 
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("app_store", "balance"), 200, new BalanceResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("app_store", "balance"), 200, new BalanceResponse
             {
                 NumberOfCredits = numberOfCredits
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            var balance = mobius.AppStore.GetBalance(new BalanceParameters
+            var balance = mobius.AppStore.GetBalance(new BalanceRequest
             {
                 AppUID = Guid.NewGuid(),
                 Email = "test@test.local"
@@ -33,15 +33,15 @@ namespace MobiusDotNet.Tests.Resources.AppStore
         [Fact]
         public async void GetsBalanceAsync()
         {
-            int numberOfCredits = 500;
+            decimal numberOfCredits = 500;
 
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("app_store", "balance"), 200, new BalanceResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("app_store", "balance"), 200, new BalanceResponse
             {
                 NumberOfCredits = numberOfCredits
             });
             
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            var balance = await mobius.AppStore.GetBalanceAsync(new BalanceParameters
+            var balance = await mobius.AppStore.GetBalanceAsync(new BalanceRequest
             {
                 AppUID = Guid.NewGuid(),
                 Email = "test@test.local"
@@ -54,7 +54,7 @@ namespace MobiusDotNet.Tests.Resources.AppStore
         [Fact]
         public void ThrowsExceptionOnErrorResponse()
         {
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("app_store", "balance"), 400, new ErrorResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("app_store", "balance"), 400, new ErrorResponse
             {
                 Error = new ErrorResponse.ErrorContainer
                 {
@@ -63,7 +63,7 @@ namespace MobiusDotNet.Tests.Resources.AppStore
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            Action getBalance = () => mobius.AppStore.GetBalance(new BalanceParameters
+            Action getBalance = () => mobius.AppStore.GetBalance(new BalanceRequest
             {
                 AppUID = Guid.NewGuid(),
                 Email = "test@test.local"
@@ -74,7 +74,7 @@ namespace MobiusDotNet.Tests.Resources.AppStore
         [Fact]
         public async void ThrowsExceptionOnErrorResponseAsync()
         {
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("app_store", "balance"), 400, new ErrorResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("app_store", "balance"), 400, new ErrorResponse
             {
                 Error = new ErrorResponse.ErrorContainer
                 {
@@ -83,7 +83,7 @@ namespace MobiusDotNet.Tests.Resources.AppStore
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            Func<Task> getBalance = () => mobius.AppStore.GetBalanceAsync(new BalanceParameters
+            Func<Task> getBalance = () => mobius.AppStore.GetBalanceAsync(new BalanceRequest
             {
                 AppUID = Guid.NewGuid(),
                 Email = "test@test.local"

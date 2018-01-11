@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace MobiusDotNet.Resources.Tokens.Parameters
+namespace MobiusDotNet.Resources.Tokens.Requests
 {
     /// <summary>
-    ///     The parameters that must be provided for a transfer info request.  
+    ///     Tokens transfer info request.  
     /// </summary>
-    public class TransferInfoParameters : ParametersBase
+    public class TransferInfoRequest : RequestBase
     {
         /// <summary>
         ///     Gets or sets the UID of the token address transfer, as returned by "TransferManaged()".

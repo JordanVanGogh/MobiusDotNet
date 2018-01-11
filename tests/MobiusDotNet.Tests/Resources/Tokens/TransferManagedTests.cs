@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MobiusDotNet.Resources;
-using MobiusDotNet.Resources.Tokens.Parameters;
+using MobiusDotNet.Resources.Tokens.Requests;
 using MobiusDotNet.Resources.Tokens.Responses;
 using Xunit;
 
@@ -17,13 +17,13 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             decimal numberOfTokens = 20.233M;
             Guid tokenAddressTransferUID = Guid.NewGuid();
 
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("tokens", "transfer/managed"), 200, new TransferManagedResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("tokens", "transfer/managed"), 200, new TransferManagedResponse
             {
                 TokenAddressTransferUID = tokenAddressTransferUID
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            var response = mobius.Tokens.TransferManaged(new TransferManagedParameters
+            var response = mobius.Tokens.TransferManaged(new TransferManagedRequest
             {
                 TokenAddressUID = tokenAddressUID,
                 AddressTo = addressTo,
@@ -42,13 +42,13 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             decimal numberOfTokens = 20.233M;
             Guid tokenAddressTransferUID = Guid.NewGuid();
 
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("tokens", "transfer/managed"), 200, new TransferManagedResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("tokens", "transfer/managed"), 200, new TransferManagedResponse
             {
                 TokenAddressTransferUID = tokenAddressTransferUID
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            var response = await mobius.Tokens.TransferManagedAsync(new TransferManagedParameters
+            var response = await mobius.Tokens.TransferManagedAsync(new TransferManagedRequest
             {
                 TokenAddressUID = tokenAddressUID,
                 AddressTo = addressTo,
@@ -66,7 +66,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             const string addressTo = @"0xE94327D07Fc17907b4DB788E5aDf2ed424adDff6";
             decimal numberOfTokens = 20.233M;
 
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("tokens", "transfer/managed"), 400, new ErrorResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("tokens", "transfer/managed"), 400, new ErrorResponse
             {
                 Error = new ErrorResponse.ErrorContainer
                 {
@@ -75,7 +75,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            Action act = () => mobius.Tokens.TransferManaged(new TransferManagedParameters
+            Action act = () => mobius.Tokens.TransferManaged(new TransferManagedRequest
             {
                 TokenAddressUID = tokenAddressUID,
                 AddressTo = addressTo,
@@ -91,7 +91,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             const string addressTo = @"0xE94327D07Fc17907b4DB788E5aDf2ed424adDff6";
             decimal numberOfTokens = 20.233M;
 
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("tokens", "transfer/managed"), 400, new ErrorResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("tokens", "transfer/managed"), 400, new ErrorResponse
             {
                 Error = new ErrorResponse.ErrorContainer
                 {
@@ -100,7 +100,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            Func<Task> func = () => mobius.Tokens.TransferManagedAsync(new TransferManagedParameters
+            Func<Task> func = () => mobius.Tokens.TransferManagedAsync(new TransferManagedRequest
             {
                 TokenAddressUID = tokenAddressUID,
                 AddressTo = addressTo,

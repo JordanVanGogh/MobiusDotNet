@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using MobiusDotNet.Resources;
 using MobiusDotNet.Resources.Tokens;
-using MobiusDotNet.Resources.Tokens.Parameters;
+using MobiusDotNet.Resources.Tokens.Requests;
 using MobiusDotNet.Resources.Tokens.Responses;
 using Xunit;
 
@@ -18,7 +18,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             TransferStatus status = TransferStatus.Complete;
             string transactionHash = "asdujasd32409892345893485";
 
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("tokens", "transfer/info"), 200, new TransferInfoResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("tokens", "transfer/info"), 200, new TransferInfoResponse
             {
                 UID = UID,
                 Status = status,
@@ -26,7 +26,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            var response = mobius.Tokens.GetTransferInfo(new TransferInfoParameters
+            var response = mobius.Tokens.GetTransferInfo(new TransferInfoRequest
             {
                 TokenAddressTransferUID = tokenAddressTransferUID
             });
@@ -45,7 +45,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             TransferStatus status = TransferStatus.Complete;
             string transactionHash = "asdujasd32409892345893485";
 
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("tokens", "transfer/info"), 200, new TransferInfoResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("tokens", "transfer/info"), 200, new TransferInfoResponse
             {
                 UID = UID,
                 Status = status,
@@ -53,7 +53,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            var response = await mobius.Tokens.GetTransferInfoAsync(new TransferInfoParameters
+            var response = await mobius.Tokens.GetTransferInfoAsync(new TransferInfoRequest
             {
                 TokenAddressTransferUID = tokenAddressTransferUID
             });
@@ -69,7 +69,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
         {
             Guid tokenAddressTransferUID = Guid.NewGuid();
 
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("tokens", "transfer/info"), 400, new ErrorResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("tokens", "transfer/info"), 400, new ErrorResponse
             {
                 Error = new ErrorResponse.ErrorContainer
                 {
@@ -78,7 +78,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            Action act = () => mobius.Tokens.GetTransferInfo(new TransferInfoParameters
+            Action act = () => mobius.Tokens.GetTransferInfo(new TransferInfoRequest
             {
                 TokenAddressTransferUID = tokenAddressTransferUID
             });
@@ -90,7 +90,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
         {
             Guid tokenAddressTransferUID = Guid.NewGuid();
 
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("tokens", "transfer/info"), 400, new ErrorResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("tokens", "transfer/info"), 400, new ErrorResponse
             {
                 Error = new ErrorResponse.ErrorContainer
                 {
@@ -99,7 +99,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            Func<Task> func = () => mobius.Tokens.GetTransferInfoAsync(new TransferInfoParameters
+            Func<Task> func = () => mobius.Tokens.GetTransferInfoAsync(new TransferInfoRequest
             {
                 TokenAddressTransferUID = tokenAddressTransferUID
             });

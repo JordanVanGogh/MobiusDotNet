@@ -1,12 +1,12 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using MobiusDotNet.Resources.Tokens.Parameters;
+using MobiusDotNet.Resources.Tokens.Requests;
 using MobiusDotNet.Resources.Tokens.Responses;
 
 namespace MobiusDotNet.Resources.Tokens
 {
     /// <summary>
-    ///     The client for Tokens resource requests.
+    ///     The client for Tokens resource request.
     /// </summary>
     public class TokensClient : ClientBase
     {
@@ -21,41 +21,41 @@ namespace MobiusDotNet.Resources.Tokens
         /// <summary>
         ///     Register a token so you can use it with the other Token API calls.
         /// </summary>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="request">The request.</param>
         /// <returns>The response that was returned by the API.</returns>
-        public RegisterTokenResponse RegisterToken(RegisterTokenParameters parameters)
+        public RegisterTokenResponse RegisterToken(RegisterTokenRequest request)
         {
-            return Post<RegisterTokenParameters, RegisterTokenResponse>(@"register", parameters);
+            return Post<RegisterTokenRequest, RegisterTokenResponse>(@"register", request);
         }
 
         /// <summary>
         ///     Register a token so you can use it with the other Token API calls.
         /// </summary>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="request">The request.</param>
         /// <returns>The response that was returned by the API.</returns>
-        public Task<RegisterTokenResponse> RegisterTokenAsync(RegisterTokenParameters parameters)
+        public Task<RegisterTokenResponse> RegisterTokenAsync(RegisterTokenRequest request)
         {
-            return PostAsync<RegisterTokenParameters, RegisterTokenResponse>(@"register", parameters);
+            return PostAsync<RegisterTokenRequest, RegisterTokenResponse>(@"register", request);
         }
 
         /// <summary>
         ///     Create an address for the token specified by TokenUID.
         /// </summary>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="request">The request.</param>
         /// <returns>The response that was returned by the API.</returns>
-        public CreateAddressResponse CreateAddress(CreateAddressParameters parameters)
+        public CreateAddressResponse CreateAddress(CreateAddressRequest request)
         {
-            return Post<CreateAddressParameters, CreateAddressResponse>(@"create_address", parameters);
+            return Post<CreateAddressRequest, CreateAddressResponse>(@"create_address", request);
         }
 
         /// <summary>
         ///     Create an address for the token specified by TokenUID.
         /// </summary>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="request">The request.</param>
         /// <returns>The response that was returned by the API.</returns>
-        public Task<CreateAddressResponse> CreateAddressAsync(CreateAddressParameters parameters)
+        public Task<CreateAddressResponse> CreateAddressAsync(CreateAddressRequest request)
         {
-            return PostAsync<CreateAddressParameters, CreateAddressResponse>(@"create_address", parameters);
+            return PostAsync<CreateAddressRequest, CreateAddressResponse>(@"create_address", request);
         }
 
         /// <summary>
@@ -64,11 +64,11 @@ namespace MobiusDotNet.Resources.Tokens
         ///     When new tokens are transferred into the address, you are alerted via the token/transfer webhook 
         ///     callback.
         /// </summary>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="request">The request.</param>
         /// <returns>The response that was returned by the API.</returns>
-        public RegisterAddressResponse RegisterAddress(RegisterAddressParameters parameters)
+        public RegisterAddressResponse RegisterAddress(RegisterAddressRequest request)
         {
-            return Post<RegisterAddressParameters, RegisterAddressResponse>(@"register_address", parameters);
+            return Post<RegisterAddressRequest, RegisterAddressResponse>(@"register_address", request);
         }
 
         /// <summary>
@@ -77,31 +77,31 @@ namespace MobiusDotNet.Resources.Tokens
         ///     When new tokens are transferred into the address, you are alerted via the token/transfer webhook 
         ///     callback.
         /// </summary>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="request">The request.</param>
         /// <returns>The response that was returned by the API.</returns>
-        public Task<RegisterAddressResponse> RegisterAddressAsync(RegisterAddressParameters parameters)
+        public Task<RegisterAddressResponse> RegisterAddressAsync(RegisterAddressRequest request)
         {
-            return PostAsync<RegisterAddressParameters, RegisterAddressResponse>(@"register_address", parameters);
+            return PostAsync<RegisterAddressRequest, RegisterAddressResponse>(@"register_address", request);
         }
 
         /// <summary>
         ///     Query the number of tokens specified by the token with TokenUID that address has.
         /// </summary>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="request">The request.</param>
         /// <returns>The response that was returned by the API.</returns>
-        public AddressBalanceResponse GetAddressBalance(AddressBalanceParameters parameters)
+        public AddressBalanceResponse GetAddressBalance(AddressBalanceRequest request)
         {
-            return Get<AddressBalanceParameters, AddressBalanceResponse>(@"balance", parameters);
+            return Get<AddressBalanceRequest, AddressBalanceResponse>(@"balance", request);
         }
 
         /// <summary>
         ///     Query the number of tokens specified by the token with TokenUID that address has.
         /// </summary>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="request">The request.</param>
         /// <returns>The response that was returned by the API.</returns>
-        public Task<AddressBalanceResponse> GetAddressBalanceAsync(AddressBalanceParameters parameters)
+        public Task<AddressBalanceResponse> GetAddressBalanceAsync(AddressBalanceRequest request)
         {
-            return GetAsync<AddressBalanceParameters, AddressBalanceResponse>(@"balance", parameters);
+            return GetAsync<AddressBalanceRequest, AddressBalanceResponse>(@"balance", request);
         }
 
         /// <summary>
@@ -109,11 +109,11 @@ namespace MobiusDotNet.Resources.Tokens
         ///     enough balance to cover the transaction fees — on Ethereum this means paying the gas costs. 
         ///     Currently Mobius does not charge any fees itself.
         /// </summary>
-        /// <param name="managedParameters">The parameters.</param>
+        /// <param name="managedRequests">The request.</param>
         /// <returns>The response that was returned by the API.</returns>
-        public TransferManagedResponse TransferManaged(TransferManagedParameters managedParameters)
+        public TransferManagedResponse TransferManaged(TransferManagedRequest managedRequest)
         {
-            return Post<TransferManagedParameters, TransferManagedResponse>(@"transfer/managed", managedParameters);
+            return Post<TransferManagedRequest, TransferManagedResponse>(@"transfer/managed", managedRequest);
         }
         
         /// <summary>
@@ -121,31 +121,31 @@ namespace MobiusDotNet.Resources.Tokens
         ///     enough balance to cover the transaction fees — on Ethereum this means paying the gas costs. 
         ///     Currently Mobius does not charge any fees itself.
         /// </summary>
-        /// <param name="managedParameters">The parameters.</param>
+        /// <param name="managedRequests">The request.</param>
         /// <returns>The response that was returned by the API.</returns>
-        public Task<TransferManagedResponse> TransferManagedAsync(TransferManagedParameters managedParameters)
+        public Task<TransferManagedResponse> TransferManagedAsync(TransferManagedRequest managedRequest)
         {
-            return PostAsync<TransferManagedParameters, TransferManagedResponse>(@"transfer/managed", managedParameters);
+            return PostAsync<TransferManagedRequest, TransferManagedResponse>(@"transfer/managed", managedRequest);
         }
         
         /// <summary>
         ///     Get the status and transaction hash of a Mobius managed token transfer.
         /// </summary>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="requests">The request.</param>
         /// <returns>The response that was returned by the API.</returns>
-        public TransferInfoResponse GetTransferInfo(TransferInfoParameters parameters)
+        public TransferInfoResponse GetTransferInfo(TransferInfoRequest request)
         {
-            return Get<TransferInfoParameters, TransferInfoResponse>(@"transfer/info", parameters);
+            return Get<TransferInfoRequest, TransferInfoResponse>(@"transfer/info", request);
         }
 
         /// <summary>
         ///     Get the status and transaction hash of a Mobius managed token transfer.
         /// </summary>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="requests">The request.</param>
         /// <returns>The response that was returned by the API.</returns>
-        public Task<TransferInfoResponse> GetTransferInfoAsync(TransferInfoParameters parameters)
+        public Task<TransferInfoResponse> GetTransferInfoAsync(TransferInfoRequest request)
         {
-            return GetAsync<TransferInfoParameters, TransferInfoResponse>(@"transfer/info", parameters);
+            return GetAsync<TransferInfoRequest, TransferInfoResponse>(@"transfer/info", request);
         }
     }
 }

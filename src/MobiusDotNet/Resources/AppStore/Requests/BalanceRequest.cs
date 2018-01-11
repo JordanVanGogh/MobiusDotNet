@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace MobiusDotNet.Resources.AppStore.Parameters
+namespace MobiusDotNet.Resources.AppStore.Requests
 {
     /// <summary>
-    ///     The parameters that must be provided for a balance request.  
+    ///     App Store balance request.  
     /// </summary>
-    public class BalanceParameters : ParametersBase
+    public class BalanceRequest : RequestBase
     {
         /// <summary>
         ///     Gets or sets the UID of the app. Get it at https://mobius.network/store/developer.

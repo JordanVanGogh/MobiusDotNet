@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using MobiusDotNet.Resources;
 using MobiusDotNet.Resources.Tokens;
-using MobiusDotNet.Resources.Tokens.Parameters;
+using MobiusDotNet.Resources.Tokens.Requests;
 using MobiusDotNet.Resources.Tokens.Responses;
 using Xunit;
 
@@ -21,7 +21,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             const string symbol = "REP";
             const string issuer = "0xE94327D07Fc17907b4DB788E5aDf2ed424adDff6";
             
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("tokens", "balance"), 200, new AddressBalanceResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("tokens", "balance"), 200, new AddressBalanceResponse
             {
                 Address = address,
                 Balance = balance,
@@ -35,7 +35,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            var response = mobius.Tokens.GetAddressBalance(new AddressBalanceParameters
+            var response = mobius.Tokens.GetAddressBalance(new AddressBalanceRequest
             {
                 TokenUID = tokenUID,
                 Address = address
@@ -61,7 +61,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             const string symbol = "REP";
             const string issuer = "0xE94327D07Fc17907b4DB788E5aDf2ed424adDff6";
 
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("tokens", "balance"), 200, new AddressBalanceResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("tokens", "balance"), 200, new AddressBalanceResponse
             {
                 Address = address,
                 Balance = balance,
@@ -75,7 +75,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            var response = await mobius.Tokens.GetAddressBalanceAsync(new AddressBalanceParameters
+            var response = await mobius.Tokens.GetAddressBalanceAsync(new AddressBalanceRequest
             {
                 TokenUID = tokenUID,
                 Address = address
@@ -97,7 +97,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             Guid tokenUID = Guid.NewGuid();
             const string address = @"0xE94327D07Fc17907b4DB788E5aDf2ed424adDff6";
 
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("tokens", "balance"), 400, new ErrorResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("tokens", "balance"), 400, new ErrorResponse
             {
                 Error = new ErrorResponse.ErrorContainer
                 {
@@ -106,7 +106,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            Action act = () => mobius.Tokens.RegisterAddress(new RegisterAddressParameters
+            Action act = () => mobius.Tokens.RegisterAddress(new RegisterAddressRequest
             {
                 TokenUID = tokenUID,
                 Address = address
@@ -120,7 +120,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             Guid tokenUID = Guid.NewGuid();
             const string address = @"0xE94327D07Fc17907b4DB788E5aDf2ed424adDff6";
 
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("tokens", "balance"), 400, new ErrorResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("tokens", "balance"), 400, new ErrorResponse
             {
                 Error = new ErrorResponse.ErrorContainer
                 {
@@ -129,7 +129,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            Func<Task> func = () => mobius.Tokens.RegisterAddressAsync(new RegisterAddressParameters
+            Func<Task> func = () => mobius.Tokens.RegisterAddressAsync(new RegisterAddressRequest
             {
                 TokenUID = tokenUID,
                 Address = address

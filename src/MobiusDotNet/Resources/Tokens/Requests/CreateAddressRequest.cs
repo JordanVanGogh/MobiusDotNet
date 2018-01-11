@@ -1,12 +1,12 @@
 ﻿
 using System;
 
-namespace MobiusDotNet.Resources.Tokens.Parameters
+namespace MobiusDotNet.Resources.Tokens.Requests
 {
     /// <summary>
-    ///     The parameters that must be provided for a create address request.  
+    ///     Tokens create address request.  
     /// </summary>
-    public class CreateAddressParameters : ParametersBase
+    public class CreateAddressRequest : RequestBase
     {
         /// <summary>
         ///     Gets or sets the UID of the token, as returned by a "RegisterToken()" request.

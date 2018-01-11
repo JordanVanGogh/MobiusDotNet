@@ -1,12 +1,12 @@
 ﻿
 using System;
 
-namespace MobiusDotNet.Resources.Tokens.Parameters
+namespace MobiusDotNet.Resources.Tokens.Requests
 {
     /// <summary>
-    ///     The parameters that must be provided for a register address request.  
+    ///     Tokens address balance retrieval request.  
     /// </summary>
-    public class RegisterAddressParameters : ParametersBase
+    public class AddressBalanceRequest : RequestBase
     {
         /// <summary>
         ///     Gets or sets the UID of the token, as returned by a "RegisterToken()" request.
@@ -15,7 +15,7 @@ namespace MobiusDotNet.Resources.Tokens.Parameters
         public Guid TokenUID { get; set; }
 
         /// <summary>
-        ///     Gets or sets the address to register.
+        ///     Gets or sets the address whose balance you want to query.
         /// </summary>
         [ParameterName("address")]
         public string Address { get; set; }

@@ -32,7 +32,7 @@ namespace MobiusDotNet.Tests.Resources
             return new MobiusConnectionInfo(apiKey ?? Guid.NewGuid().ToString(), host, version, authorization);
         }
         
-        protected HttpClient StartWebHostWithFixedResponse<TResponse>(String path, int httpStatusCode, TResponse response)
+        protected HttpClient StartTestHostWithFixedResponse<TResponse>(String path, int httpStatusCode, TResponse response)
             where TResponse : ResponseBase
         {
             TestServer = new TestServer(new WebHostBuilder()

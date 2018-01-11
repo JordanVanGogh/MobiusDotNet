@@ -1,5 +1,5 @@
 ﻿using System;
-using MobiusDotNet.Resources.AppStore.Parameters;
+using MobiusDotNet.Resources.AppStore.Requests;
 
 namespace MobiusDotNet.TestConsole
 {
@@ -41,7 +41,7 @@ namespace MobiusDotNet.TestConsole
         static void GetBalance()
         {
             var mobius = new Mobius(GetConnectionDetails());
-            var response = mobius.AppStore.GetBalance(new BalanceParameters
+            var response = mobius.AppStore.GetBalance(new BalanceRequest
             {
                 AppUID = Guid.NewGuid(),
                 Email = "john.doe@test.local"
@@ -53,7 +53,7 @@ namespace MobiusDotNet.TestConsole
         static void Use()
         {
             var mobius = new Mobius(GetConnectionDetails());
-            var response = mobius.AppStore.Use(new UseParameters
+            var response = mobius.AppStore.Use(new UseRequest
             {
                 AppUID = Guid.NewGuid(),
                 Email = "john.doe@test.local",

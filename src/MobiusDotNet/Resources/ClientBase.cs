@@ -31,66 +31,66 @@ namespace MobiusDotNet.Resources
         /// <summary>
         ///     Issues a GET request.
         /// </summary>
-        /// <typeparam name="TParameters">Type of the parameters.</typeparam>
+        /// <typeparam name="TRequest">Type of the request.</typeparam>
         /// <typeparam name="TResponse">Type of the response.</typeparam>
         /// <param name="action">The resource action</param>
-        /// <param name="parameters">The request parameters.</param>
+        /// <param name="request">The request.</param>
         /// <returns>A response object.</returns>
-        protected TResponse Get<TParameters, TResponse>(String action, TParameters parameters = null)
-            where TParameters : ParametersBase
+        protected TResponse Get<TRequest, TResponse>(String action, TRequest request = null)
+            where TRequest : RequestBase
             where TResponse : ResponseBase
         {
-            return WaitForTaskResult(GetAsync<TParameters, TResponse>(action, parameters));
+            return WaitForTaskResult(GetAsync<TRequest, TResponse>(action, request));
         }
 
         /// <summary>
         ///     Issues a GET request.
         /// </summary>
-        /// <typeparam name="TParameters">Type of the parameters.</typeparam>
+        /// <typeparam name="TRequest">Type of the request.</typeparam>
         /// <typeparam name="TResponse">Type of the response.</typeparam>
         /// <param name="action">The resource action</param>
-        /// <param name="parameters">The request parameters.</param>
+        /// <param name="request">The request.</param>
         /// <returns>A response object.</returns>
-        protected Task<TResponse> GetAsync<TParameters, TResponse>(String action, TParameters parameters = null)
-            where TParameters : ParametersBase
+        protected Task<TResponse> GetAsync<TRequest, TResponse>(String action, TRequest request = null)
+            where TRequest : RequestBase
             where TResponse : ResponseBase
         {
             if (action == null) throw new ArgumentNullException(nameof(action));
 
-            return SendAsync<TParameters, TResponse>(HttpMethod.Get, action, parameters);
+            return SendAsync<TRequest, TResponse>(HttpMethod.Get, action, request);
         }
 
         /// <summary>
         ///     Issues a POST request.
         /// </summary>
-        /// <typeparam name="TParameters">Type of the parameters.</typeparam>
+        /// <typeparam name="TRequest">Type of the request.</typeparam>
         /// <typeparam name="TResponse">Type of the response.</typeparam>
         /// <param name="action">The resource action</param>
-        /// <param name="parameters">The request parameters.</param>
+        /// <param name="request">The request.</param>
         /// <returns>A response object.</returns>
-        protected TResponse Post<TParameters, TResponse>(String action, TParameters parameters)
-            where TParameters : ParametersBase
+        protected TResponse Post<TRequest, TResponse>(String action, TRequest request)
+            where TRequest : RequestBase
             where TResponse : ResponseBase
         {
-            return WaitForTaskResult(PostAsync<TParameters, TResponse>(action, parameters));
+            return WaitForTaskResult(PostAsync<TRequest, TResponse>(action, request));
         }
 
         /// <summary>
         ///     Issues a POST request.
         /// </summary>
-        /// <typeparam name="TParameters">Type of the parameters.</typeparam>
+        /// <typeparam name="TRequest">Type of the request.</typeparam>
         /// <typeparam name="TResponse">Type of the response.</typeparam>
         /// <param name="action">The resource action</param>
-        /// <param name="parameters">The request parameters.</param>
+        /// <param name="request">The request.</param>
         /// <returns>A response object.</returns>
-        protected Task<TResponse> PostAsync<TParameters, TResponse>(String action, TParameters parameters)
-            where TParameters : ParametersBase
+        protected Task<TResponse> PostAsync<TRequest, TResponse>(String action, TRequest request)
+            where TRequest : RequestBase
             where TResponse : ResponseBase
         {
             if (action == null) throw new ArgumentNullException(nameof(action));
-            if (parameters == null) throw new ArgumentNullException(nameof(parameters));
+            if (request == null) throw new ArgumentNullException(nameof(request));
 
-            return SendAsync<TParameters, TResponse>(HttpMethod.Post, action, parameters);
+            return SendAsync<TRequest, TResponse>(HttpMethod.Post, action, request);
         }
 
         private TResponse WaitForTaskResult<TResponse>(Task<TResponse> task)
@@ -106,19 +106,19 @@ namespace MobiusDotNet.Resources
             }
         }
         
-        private async Task<TResponse> SendAsync<TParameters, TResponse>(
+        private async Task<TResponse> SendAsync<TRequest, TResponse>(
             HttpMethod httpMethod, 
             String action,
-            TParameters parameters)
-            where TParameters : ParametersBase
+            TRequest request)
+            where TRequest : RequestBase
             where TResponse : ResponseBase
         {
             var url = FormatUrl(action);
             var message = new HttpRequestMessage(httpMethod, url);
             AddHeadersToRequest(message);
-            if (parameters != null)
+            if (request != null)
             {
-                var dictionary = parameters.ToDictionary();
+                var dictionary = request.ToDictionary();
                 if (dictionary.Count > 0)
                 {
                     var content = new FormUrlEncodedContent(dictionary);

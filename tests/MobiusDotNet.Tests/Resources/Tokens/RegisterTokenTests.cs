@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using MobiusDotNet.Resources;
 using MobiusDotNet.Resources.Tokens;
-using MobiusDotNet.Resources.Tokens.Parameters;
+using MobiusDotNet.Resources.Tokens.Requests;
 using MobiusDotNet.Resources.Tokens.Responses;
 using Xunit;
 
@@ -19,7 +19,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             const string symbol = @"REP";
             const string issuer = @"0xE94327D07Fc17907b4DB788E5aDf2ed424adDff6";
 
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("tokens", "register"), 200, new RegisterTokenResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("tokens", "register"), 200, new RegisterTokenResponse
             {
                 UID = UID,
                 TokenType = tokenType,
@@ -29,7 +29,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            var response = mobius.Tokens.RegisterToken(new RegisterTokenParameters
+            var response = mobius.Tokens.RegisterToken(new RegisterTokenRequest
             {
                 TokenType = tokenType,
                 Issuer = issuer,
@@ -54,7 +54,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             const string symbol = @"REP";
             const string issuer = @"0xE94327D07Fc17907b4DB788E5aDf2ed424adDff6";
 
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("tokens", "register"), 200, new RegisterTokenResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("tokens", "register"), 200, new RegisterTokenResponse
             {
                 UID = UID,
                 TokenType = tokenType,
@@ -64,7 +64,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            var response = await mobius.Tokens.RegisterTokenAsync(new RegisterTokenParameters
+            var response = await mobius.Tokens.RegisterTokenAsync(new RegisterTokenRequest
             {
                 TokenType = tokenType,
                 Issuer = issuer,
@@ -83,7 +83,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
         [Fact]
         public void ThrowsExceptionOnErrorResponse()
         {
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("tokens", "register"), 400, new ErrorResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("tokens", "register"), 400, new ErrorResponse
             {
                 Error = new ErrorResponse.ErrorContainer
                 {
@@ -92,7 +92,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            Action act = () => mobius.Tokens.RegisterToken(new RegisterTokenParameters
+            Action act = () => mobius.Tokens.RegisterToken(new RegisterTokenRequest
             {
                 TokenType = TokenType.Erc20,
                 Issuer = "Test Corp",
@@ -105,7 +105,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
         [Fact]
         public async void ThrowsExceptionOnErrorResponseAsync()
         {
-            var testHttpClient = StartWebHostWithFixedResponse(GetPath("tokens", "register"), 400, new ErrorResponse
+            var testHttpClient = StartTestHostWithFixedResponse(GetPath("tokens", "register"), 400, new ErrorResponse
             {
                 Error = new ErrorResponse.ErrorContainer
                 {
@@ -114,7 +114,7 @@ namespace MobiusDotNet.Tests.Resources.Tokens
             });
 
             var mobius = new Mobius(testHttpClient, GetConnectionInfo());
-            Func<Task> func = () => mobius.Tokens.RegisterTokenAsync(new RegisterTokenParameters
+            Func<Task> func = () => mobius.Tokens.RegisterTokenAsync(new RegisterTokenRequest
             {
                 TokenType = TokenType.Erc20,
                 Issuer = "Test Corp",

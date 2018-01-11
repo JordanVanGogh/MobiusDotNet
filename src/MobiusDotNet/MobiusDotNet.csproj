@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Jordan van Gogh</Authors>
     <Company>Agile Bits</Company>
-    <Description>Unofficial community backed Mobius API client. Stongly typed and async, provides ease of access to the Mobius API for .NET developers.</Description>
+    <Description>Unofficial community backed Mobius API client for .NET Core 2.0. Stongly typed and async, provides ease of access to the Mobius API for .NET developers.</Description>
     <Copyright />
     <PackageLicenseUrl>https://raw.githubusercontent.com/AgileBits-Jordan/MobiusDotNet/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>Git</RepositoryType>
@@ -13,6 +13,9 @@
     <RepositoryUrl>https://github.com/AgileBits-Jordan/MobiusDotNet</RepositoryUrl>
     <PackageProjectUrl>https://github.com/AgileBits-Jordan/MobiusDotNet</PackageProjectUrl>
     <PackageIconUrl></PackageIconUrl>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

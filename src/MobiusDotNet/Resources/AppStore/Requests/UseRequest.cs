@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace MobiusDotNet.Resources.AppStore.Parameters
+namespace MobiusDotNet.Resources.AppStore.Requests
 {
     /// <summary>
-    ///     The parameters that must be provided for a use request.  
+    ///     App Store use request.  
     /// </summary>
-    public class UseParameters : ParametersBase
+    public class UseRequest : RequestBase
     {
         /// <summary>
         ///     Gets or sets the UID of the app. Get it at https://mobius.network/store/developer.
@@ -23,6 +23,6 @@ namespace MobiusDotNet.Resources.AppStore.Parameters
         ///     Gets or sets the number of credits to use.
         /// </summary>
         [ParameterName("num_credits")]
-        public int NumberOfCredits { get; set; }
+        public decimal NumberOfCredits { get; set; }
     }
 }
