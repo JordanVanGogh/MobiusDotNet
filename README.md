@@ -37,61 +37,71 @@ Every API method comes in two flavors: async and sync/blocking. Which to use is 
 
 Async:
 ```csharp
-try
+public async Task<bool> Use(decimal numberOfCredits)
 {
-    var appUID = Guid.Parse("7949c369-6db7-4313-bef8-08e94d166de5");
-    var email = "mail@example.com";
-
-    var balance = await mobius.AppStore
-        .GetBalanceAsync(new BalanceRequest
-        {
-            AppUID = appUID,
-            Email = email
-        });
-    if (balance.NumberOfCredits > 0)
+    try
     {
-        await mobius.AppStore
-            .UseAsync(new UseRequest
+        var appUID = Guid.Parse("7949c369-6db7-4313-bef8-08e94d166de5");
+        var email = "mail@example.com";
+
+        var balance = await mobius.AppStore
+            .GetBalanceAsync(new BalanceRequest
             {
                 AppUID = appUID,
-                Email = email,
-                NumberOfCredits = 1
+                Email = email
             });
+        if (balance.NumberOfCredits > 0)
+        {
+            var result = await mobius.AppStore
+                .UseAsync(new UseRequest
+                {
+                    AppUID = appUID,
+                    Email = email,
+                    NumberOfCredits = numberOfCredits
+                });
+            return result.IsSuccess;
+        }
     }
-}
-catch (MobiusException e)
-{
-    Console.WriteLine(e.ToString());
+    catch (MobiusException e)
+    {
+        Console.WriteLine(e.ToString());
+    }
+    return false;
 }
 ```
 
 Sync/blocking:
 ```csharp
-try
+public bool Use(decimal numberOfCredits)
 {
-    var appUID = Guid.Parse("7949c369-6db7-4313-bef8-08e94d166de5");
-    var email = "mail@example.com";
-
-    var balance = mobius.AppStore
-        .GetBalance(new BalanceRequest
-        {
-            AppUID = appUID,
-            Email = email
-        });
-    if (balance.NumberOfCredits > 0)
+    try
     {
-        mobius.AppStore
-            .Use(new UseRequest
+        var appUID = Guid.Parse("7949c369-6db7-4313-bef8-08e94d166de5");
+        var email = "mail@example.com";
+
+        var balance = mobius.AppStore
+            .GetBalance(new BalanceRequest
             {
                 AppUID = appUID,
-                Email = email,
-                NumberOfCredits = 1
+                Email = email
             });
+        if (balance.NumberOfCredits > 0)
+        {
+            var result = mobius.AppStore
+                .Use(new UseRequest
+                {
+                    AppUID = appUID,
+                    Email = email,
+                    NumberOfCredits = numberOfCredits
+                });
+            return result.IsSuccess;
+        }
     }
-}
-catch (MobiusException e)
-{
-    Console.WriteLine(e.ToString());
+    catch (MobiusException e)
+    {
+        Console.WriteLine(e.ToString());
+    }
+    return false;
 }
 ```
 
