@@ -13,7 +13,7 @@ namespace MobiusDotNet
     /// </summary>
     public class Mobius : IDisposable
     {
-        private readonly HttpClient _localHttpClient;
+        private readonly HttpClient _localHttpClientInstance;
 
         /// <summary>
         ///     The App Store API.
@@ -44,12 +44,12 @@ namespace MobiusDotNet
             HttpClient httpClientToUse;
             if (httpClient == null)
             {
-                _localHttpClient = new HttpClient();
-                httpClientToUse = _localHttpClient;
+                _localHttpClientInstance = new HttpClient();
+                httpClientToUse = _localHttpClientInstance;
             }
             else
             {
-                _localHttpClient = null;
+                _localHttpClientInstance = null;
                 httpClientToUse = httpClient;
             }
 
@@ -60,8 +60,8 @@ namespace MobiusDotNet
         /// <inheritdoc />
         public void Dispose()
         {
-            if (_localHttpClient != null)
-                _localHttpClient.Dispose();
+            if (_localHttpClientInstance != null)
+                _localHttpClientInstance.Dispose();
         }
     }
 }
