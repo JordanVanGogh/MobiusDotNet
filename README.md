@@ -131,7 +131,7 @@ var registeredToken = await mobius.Tokens
     });
 ```
 
-**Tokens > Create address:** create an address for the token specified by token_uid:
+**Tokens > Create address:** create an address for the token specified by TokenUID:
 ```csharp
 var createdAddress = await mobius.Tokens
     .CreateAddressAsync(new CreateAddressRequest
@@ -150,7 +150,7 @@ var registeredAddress = await mobius.Tokens
     });
 ```
 
-**Tokens > Get address balance:** query the number of tokens specified by the token with token_uid that address has:
+**Tokens > Get address balance:** query the number of tokens specified by the token with TokenUID that address has:
 ```csharp
 var addressBalance = await mobius.Tokens
     .GetAddressBalanceAsync(new AddressBalanceRequest
@@ -173,7 +173,7 @@ var transfered = await mobius.Tokens
 
 **Tokens > Get transfer info:** get the status and transaction hash of a Mobius managed token transfer:
 ```csharp
-var transfered = await mobius.Tokens
+var transferInfo = await mobius.Tokens
     .GetTransferInfoAsync(new TransferInfoRequest
     {
         TokenAddressTransferUID = Guid.Parse("f8a32950-7a24-493f-a6d2-02d255f746b6")

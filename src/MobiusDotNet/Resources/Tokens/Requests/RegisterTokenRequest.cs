@@ -1,4 +1,7 @@
 ﻿
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
 namespace MobiusDotNet.Resources.Tokens.Requests
 {
     /// <summary>
@@ -10,6 +13,7 @@ namespace MobiusDotNet.Resources.Tokens.Requests
         ///     Gets or sets the token type.
         /// </summary>
         [ParameterName("token_type")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public TokenType TokenType { get; set; }
         
         /// <summary>

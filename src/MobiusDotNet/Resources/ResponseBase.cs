@@ -10,7 +10,7 @@ namespace MobiusDotNet.Resources
         /// <inheritdoc />
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
     }
 }

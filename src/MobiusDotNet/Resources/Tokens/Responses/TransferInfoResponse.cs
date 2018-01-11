@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace MobiusDotNet.Resources.Tokens.Responses
 {
@@ -18,6 +19,7 @@ namespace MobiusDotNet.Resources.Tokens.Responses
         ///     Gets or sets the status of the transfer.
         /// </summary>
         [JsonProperty("status")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public TransferStatus Status { get; set; }
 
         /// <summary>
