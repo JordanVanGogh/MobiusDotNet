@@ -5,7 +5,7 @@ namespace MobiusDotNet.Resources.AppStore.Responses
     /// <summary>
     ///     The response of a balance request.
     /// </summary>
-    public class BalanceResponse : ResponseBase
+    public class BalanceResponse : Response
     {
         /// <summary>
         ///     Gets or sets the number of credits on the balance.

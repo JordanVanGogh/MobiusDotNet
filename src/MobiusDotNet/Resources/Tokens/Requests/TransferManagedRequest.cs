@@ -1,12 +1,11 @@
-﻿
-using System;
+﻿using System;
 
 namespace MobiusDotNet.Resources.Tokens.Requests
 {
     /// <summary>
     ///     Tokens transfer managed request.  
     /// </summary>
-    public class TransferManagedRequest : RequestBase
+    public class TransferManagedRequest : Request
     {
         /// <summary>
         ///     Gets or sets the token address UID, as returned by "CreateAddress()".

@@ -1,12 +1,11 @@
-﻿
-using System;
+﻿using System;
 
 namespace MobiusDotNet.Resources.Tokens.Requests
 {
     /// <summary>
     ///     Tokens register address request.  
     /// </summary>
-    public class RegisterAddressRequest : RequestBase
+    public class RegisterAddressRequest : Request
     {
         /// <summary>
         ///     Gets or sets the UID of the token, as returned by a "RegisterToken()" request.

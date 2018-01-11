@@ -6,7 +6,7 @@ namespace MobiusDotNet.Resources.Tokens.Responses
     /// <summary>
     ///     The response of a register token request.
     /// </summary>
-    public class RegisterTokenResponse : ResponseBase
+    public class RegisterTokenResponse : Response
     {
         /// <summary>
         ///     Gets or sets the UID of the token.

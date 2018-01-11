@@ -1,5 +1,4 @@
-﻿
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace MobiusDotNet.Resources.Tokens.Requests
@@ -7,7 +6,7 @@ namespace MobiusDotNet.Resources.Tokens.Requests
     /// <summary>
     ///     Tokens register token request.  
     /// </summary>
-    public class RegisterTokenRequest : RequestBase
+    public class RegisterTokenRequest : Request
     {
         /// <summary>
         ///     Gets or sets the token type.

@@ -190,6 +190,22 @@ var transferInfo = await mobius.Tokens
     });
 ```
 
+## Webhooks
+
+**App Store > Deposit:** is called when a user deposits credits in your app through the DApp store:
+```csharp
+var model = Webhook.Bind(json);
+if (model is Deposit d)
+    DepositAction(d);
+```
+
+**Tokens > Transfer:** is called when tokens are transferred into a Mobius created or registered address for a registered token:
+```csharp
+var model = Webhook.Bind(json);
+if (model is Transfer t)
+    TransferAction(t);
+```
+
 ## More information
 
 See the [REST API docs](https://mobius.network/docs/)

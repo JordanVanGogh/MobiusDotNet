@@ -7,9 +7,9 @@ using System.Linq;
 namespace MobiusDotNet.Resources
 {
     /// <summary>
-    ///     Base class for request.
+    ///     Base class for requests.
     /// </summary>
-    public abstract class RequestBase
+    public abstract class Request
     {
         /// <summary>
         ///     Serializes this instance to a dictionary.

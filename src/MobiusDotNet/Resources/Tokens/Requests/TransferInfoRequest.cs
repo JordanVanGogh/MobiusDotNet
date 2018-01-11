@@ -5,7 +5,7 @@ namespace MobiusDotNet.Resources.Tokens.Requests
     /// <summary>
     ///     Tokens transfer info request.  
     /// </summary>
-    public class TransferInfoRequest : RequestBase
+    public class TransferInfoRequest : Request
     {
         /// <summary>
         ///     Gets or sets the UID of the token address transfer, as returned by "TransferManaged()".

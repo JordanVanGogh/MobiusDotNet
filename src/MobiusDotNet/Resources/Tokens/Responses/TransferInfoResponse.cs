@@ -7,7 +7,7 @@ namespace MobiusDotNet.Resources.Tokens.Responses
     /// <summary>
     ///     The response of a transfer info request.
     /// </summary>
-    public class TransferInfoResponse : ResponseBase
+    public class TransferInfoResponse : Response
     {
         /// <summary>
         ///     Gets or sets the UID of the transfer.

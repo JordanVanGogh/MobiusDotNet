@@ -6,7 +6,7 @@ namespace MobiusDotNet.Resources.Tokens.Responses
     /// <summary>
     ///     The response of a transfer managed request.
     /// </summary>
-    public class TransferManagedResponse : ResponseBase
+    public class TransferManagedResponse : Response
     {
         /// <summary>
         ///     Gets or sets the UID of the transfer, which can be used for querying its status.

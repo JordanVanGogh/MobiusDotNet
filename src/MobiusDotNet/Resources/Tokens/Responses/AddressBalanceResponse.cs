@@ -5,7 +5,7 @@ namespace MobiusDotNet.Resources.Tokens.Responses
     /// <summary>
     ///     The response of an address balance request.
     /// </summary>
-    public class AddressBalanceResponse : ResponseBase
+    public class AddressBalanceResponse : Response
     {
         /// <summary>
         ///     Gets or sets the address.

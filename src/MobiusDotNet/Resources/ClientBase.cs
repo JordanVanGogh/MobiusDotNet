@@ -17,7 +17,7 @@ namespace MobiusDotNet.Resources
         /// <summary>
         ///     Gets the resource name this client uses.
         /// </summary>
-        protected abstract String ResourceName { get; }
+        protected abstract string ResourceName { get; }
 
         /// <summary>
         ///     Initializes a new instance of this class.
@@ -36,9 +36,9 @@ namespace MobiusDotNet.Resources
         /// <param name="action">The resource action</param>
         /// <param name="request">The request.</param>
         /// <returns>A response object.</returns>
-        protected TResponse Get<TRequest, TResponse>(String action, TRequest request = null)
-            where TRequest : RequestBase
-            where TResponse : ResponseBase
+        protected TResponse Get<TRequest, TResponse>(string action, TRequest request = null)
+            where TRequest : Request
+            where TResponse : Response
         {
             return WaitForTaskResult(GetAsync<TRequest, TResponse>(action, request));
         }
@@ -51,9 +51,9 @@ namespace MobiusDotNet.Resources
         /// <param name="action">The resource action</param>
         /// <param name="request">The request.</param>
         /// <returns>A response object.</returns>
-        protected Task<TResponse> GetAsync<TRequest, TResponse>(String action, TRequest request = null)
-            where TRequest : RequestBase
-            where TResponse : ResponseBase
+        protected Task<TResponse> GetAsync<TRequest, TResponse>(string action, TRequest request = null)
+            where TRequest : Request
+            where TResponse : Response
         {
             if (action == null) throw new ArgumentNullException(nameof(action));
 
@@ -68,9 +68,9 @@ namespace MobiusDotNet.Resources
         /// <param name="action">The resource action</param>
         /// <param name="request">The request.</param>
         /// <returns>A response object.</returns>
-        protected TResponse Post<TRequest, TResponse>(String action, TRequest request)
-            where TRequest : RequestBase
-            where TResponse : ResponseBase
+        protected TResponse Post<TRequest, TResponse>(string action, TRequest request)
+            where TRequest : Request
+            where TResponse : Response
         {
             return WaitForTaskResult(PostAsync<TRequest, TResponse>(action, request));
         }
@@ -83,9 +83,9 @@ namespace MobiusDotNet.Resources
         /// <param name="action">The resource action</param>
         /// <param name="request">The request.</param>
         /// <returns>A response object.</returns>
-        protected Task<TResponse> PostAsync<TRequest, TResponse>(String action, TRequest request)
-            where TRequest : RequestBase
-            where TResponse : ResponseBase
+        protected Task<TResponse> PostAsync<TRequest, TResponse>(string action, TRequest request)
+            where TRequest : Request
+            where TResponse : Response
         {
             if (action == null) throw new ArgumentNullException(nameof(action));
             if (request == null) throw new ArgumentNullException(nameof(request));
@@ -94,7 +94,7 @@ namespace MobiusDotNet.Resources
         }
 
         private TResponse WaitForTaskResult<TResponse>(Task<TResponse> task)
-            where TResponse : ResponseBase
+            where TResponse : Response
         {
             try
             {
@@ -108,10 +108,10 @@ namespace MobiusDotNet.Resources
         
         private async Task<TResponse> SendAsync<TRequest, TResponse>(
             HttpMethod httpMethod, 
-            String action,
+            string action,
             TRequest request)
-            where TRequest : RequestBase
-            where TResponse : ResponseBase
+            where TRequest : Request
+            where TResponse : Response
         {
             var url = FormatUrl(action);
             var message = new HttpRequestMessage(httpMethod, url);

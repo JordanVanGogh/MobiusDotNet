@@ -5,7 +5,7 @@ namespace MobiusDotNet.Resources
     /// <summary>
     ///     The response when an error has occurred.
     /// </summary>
-    internal class ErrorResponse : ResponseBase
+    internal class ErrorResponse : Response
     {
         /// <summary>
         ///     Gets or sets the error.

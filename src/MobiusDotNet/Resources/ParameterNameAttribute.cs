@@ -18,7 +18,7 @@ namespace MobiusDotNet.Resources
         ///     Instantiates a new instance of this class.
         /// </summary>
         /// <param name="name">Alternate name of the request parameter</param>
-        public ParameterNameAttribute(String name)
+        public ParameterNameAttribute(string name)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
         }

@@ -49,7 +49,7 @@ namespace MobiusDotNet
         /// <param name="httpStatusCode">The HTTP status code.</param>
         /// <param name="httpReason">The HTTP reason.</param>
         /// <param name="message">The message.</param>
-        public MobiusException(int httpStatusCode, String httpReason, String message)
+        public MobiusException(int httpStatusCode, string httpReason, string message)
         {
             HttpStatusCode = httpStatusCode;
             HttpReason = httpReason;

@@ -6,7 +6,7 @@ namespace MobiusDotNet.Resources.Tokens.Responses
     /// <summary>
     ///     The response of a create address request.
     /// </summary>
-    public class CreateAddressResponse : ResponseBase
+    public class CreateAddressResponse : Response
     {
         /// <summary>
         ///     Gets or sets the UID of the new address.

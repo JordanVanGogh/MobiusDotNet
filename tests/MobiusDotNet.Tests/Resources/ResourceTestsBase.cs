@@ -33,7 +33,7 @@ namespace MobiusDotNet.Tests.Resources
         }
         
         protected HttpClient StartTestHostWithFixedResponse<TResponse>(String path, int httpStatusCode, TResponse response)
-            where TResponse : ResponseBase
+            where TResponse : Response
         {
             TestServer = new TestServer(new WebHostBuilder()
                 .Configure(app =>

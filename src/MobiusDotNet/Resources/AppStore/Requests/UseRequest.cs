@@ -5,7 +5,7 @@ namespace MobiusDotNet.Resources.AppStore.Requests
     /// <summary>
     ///     App Store use request.  
     /// </summary>
-    public class UseRequest : RequestBase
+    public class UseRequest : Request
     {
         /// <summary>
         ///     Gets or sets the UID of the app. Get it at https://mobius.network/store/developer.

@@ -25,21 +25,21 @@ namespace MobiusDotNet
         /// <summary>
         ///     Gets the API key.
         /// </summary>
-        public String ApiKey { get; }
+        public string ApiKey { get; }
 
         /// <summary>
         ///     Gets the host name.
         /// </summary>
-        public String Host { get; }
+        public string Host { get; }
 
         /// <summary>
         ///     Gets the API version.
         /// </summary>
-        public String Version { get; }
+        public string Version { get; }
 
         /// <summary>
         ///     Gets the authorization value.
         /// </summary>
-        public String Authorization { get; }
+        public string Authorization { get; }
     }
 }
